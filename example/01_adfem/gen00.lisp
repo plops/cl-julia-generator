@@ -25,6 +25,7 @@
 	     (Pkg.add (string "ADCME")
 		      )
 	     (Pkg.add (string "AdFem"))
+	     (Pkg.add (string "PyPlot"))
 	     
 	     ))))
     (write-source (format nil "~a/source/~a" *path* *code-file*) code)
