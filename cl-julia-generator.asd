@@ -1,4 +1,4 @@
-(asdf:defsystem cl-jl-generator
+(asdf:defsystem cl-julia-generator
     :version "0"
     :description "Emit Julia code"
     :maintainer " <kielhorn.martin@gmail.com>"

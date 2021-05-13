@@ -1,7 +1,7 @@
 ;(ql:quickload "optima")
 ;(ql:quickload "alexandria")
 
-(in-package :cl-jl-generator)
+(in-package :cl-julia-generator)
 (setf (readtable-case *readtable*) :invert)
 
 (defparameter *file-hashes* (make-hash-table))
@@ -133,7 +133,7 @@
 		       (declare (ignorable req-param opt-param res-param
 					   key-param other-key-p aux-param key-exist-p))
 		       (with-output-to-string (s)
-			 (format s "def ~a~a:~%"
+			 (format s "function ~a~a:~%"
 				 name
 				 (emit `(paren
 					 ,@(append (mapcar #'emit req-param)
@@ -144,7 +144,8 @@
 							  (if init
 							      `(= ,name ,init)
 							      `(= ,name "None"))))))))
-			 (format s "~a" (emit `(do ,@body)))))))
+			 (format s "~a" (emit `(do ,@body)))
+			 (format s "end~%")))))
 	      (= (destructuring-bind (a b) (cdr code)
 		   (format nil "~a=~a" (emit a) (emit b))))
 	      (in (destructuring-bind (a b) (cdr code)
@@ -236,7 +237,8 @@
 		       (format s "for ~a in ~a:~%"
 			       (emit vs)
 			       (emit ls))
-		       (format s "~a" (emit `(do ,@body))))))
+		       (format s "~a" (emit `(do ,@body)))
+		       (format s "end~%"))))
 	      (for-generator
 	       (destructuring-bind ((vs ls) expr) (cdr code)
 		     (format nil "~a for ~a in ~a"

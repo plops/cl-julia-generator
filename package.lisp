@@ -1,6 +1,6 @@
 ;(ql:quickload "optima")
 ;(ql:quickload "alexandria")
-(defpackage :cl-jl-generator
+(defpackage :cl-julia-generator
   (:use :cl
 	;:optima
 	:alexandria)
