@@ -1,59 +1,16 @@
 ;(ql:quickload "optima")
 ;(ql:quickload "alexandria")
 
-(in-package :cl-py-generator)
+(in-package :cl-jl-generator)
 (setf (readtable-case *readtable*) :invert)
 
 (defparameter *file-hashes* (make-hash-table))
 
-(defun write-notebook (&key nb-file nb-code)
-  "write python jupyter notebook"
-  (let ((tmp (format nil "~a.tmp" nb-file)))
-    (with-output-to-file (s tmp :if-exists :supersede
-				:if-does-not-exist :create)
-      (format s "~a~%"
-	      (jonathan:to-json
-	       `(:|cells|
-		  ,(loop for e in nb-code
-			 collect
-			 (destructuring-bind (name &rest rest) e
-			   (case name
-			     (`markdown `(:cell_type "markdown"
-					  :metadata :empty
-					  :source
-					  ,(loop for p in rest
-						 collect
-						 (format nil "~a~c" p #\Newline))))
-			     (`python `(:cell_type "code"
-					:metadata :empty
-					:execution_count :null
-					:outputs ()
-					:source
-					,(loop for p in rest
-					       appending
-					       (let ((tempfn "/dev/shm/cell"))
-						 (write-source tempfn p)
-						 (with-open-file (stream (format nil "~a.py" tempfn))
-						   (loop for line = (read-line stream nil)
-							 while line
-							 collect
-							 (format nil "~a~c" line #\Newline)))))))
-			     )))
-		  :|metadata| (:|kernelspec| (:|display_name| "Python 3"
-					       :|language| "python"
-					      :|name| "python3"))
-		 :|nbformat| 4
-		  :|nbformat_minor| 2))))
-    (sb-ext:run-program "/usr/bin/jq" `("-M" "." ,tmp)
-			:output nb-file
-			:if-output-exists :supersede)
-    (delete-file tmp)))
-
 (defun write-source (name code &optional (dir (user-homedir-pathname))
 				 ignore-hash)
-  (let* ((fn (merge-pathnames (format nil "~a.py" name)
+  (let* ((fn (merge-pathnames (format nil "~a.jl" name)
 			      dir))
-	(code-str (emit-py
+	(code-str (emit-jl
 		   :clear-env t
 		   :code code))
 	(fn-hash (sxhash fn))
@@ -72,7 +29,7 @@
        #+nil
 
        (sb-ext:run-program "/usr/bin/autopep8" (list "--max-line-length 80" (namestring fn)))
-       #+sbcl (sb-ext:run-program "/usr/bin/yapf" (list "-i" (namestring fn)))))))
+       #+nilsbcl (sb-ext:run-program "/usr/bin/yapf" (list "-i" (namestring fn)))))))
 
 (defun print-sufficient-digits-f64 (f)
   "print a double floating point number as a string with a given nr. of                                                                                                                                             
@@ -99,22 +56,15 @@
 (defparameter *env-functions* nil)
 (defparameter *env-macros* nil)
 
-#+nil
-(defun dotry (code)
-  `(try (do0
-	 ,code)
-	("Exception as exc"
-	 ,(lprint `(exc))
-	 pass)))
 
-(defun emit-py (&key code (str nil) (clear-env nil) (level 0))
+(defun emit-jl (&key code (str nil) (clear-env nil) (level 0))
   ;(format t "emit ~a ~a~%" level code)
   (when clear-env
     (setf *env-functions* nil
 	  *env-macros* nil))
   (flet ((emit (code &optional (dl 0))
-	   (emit-py :code code :clear-env nil :level (+ dl level))))
-    (format nil "emit-py ~a" level)
+	   (emit-jl :code code :clear-env nil :level (+ dl level))))
+    (format nil "emit-jl ~a" level)
     (if code
 	(if (listp code)
 	    (case (car code)

@@ -1,6 +1,6 @@
 ;(ql:quickload "optima")
 ;(ql:quickload "alexandria")
-(defpackage :cl-py-generator
+(defpackage :cl-jl-generator
   (:use :cl
 	;:optima
 	:alexandria)
@@ -14,7 +14,5 @@
    #:dot
    #:**
    #:imports
-   #:try
    #:write-source
-   #:run
-   #:start-python))
+   ))
