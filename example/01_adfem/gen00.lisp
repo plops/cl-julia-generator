@@ -48,6 +48,34 @@
 	     (ntuple K F) (impose_Dirichlet_boundary_conditions K F bdnode
 								(zeros (length bdnode)))
 	     sol "K\\F"))
+     )
+    (write-source
+     (format nil "~a/source/~a" *path* "run_02_adcme")
+     `(do0
+       "using LinearAlgebra"
+       "using ADCME"
+       (setf n 101
+	     h (/ 1 (- n 1))
+	     x (aref (LinRange 0 1 n)
+		     (slice 2 (- end 1)))
+	     b (Variable 10.0)
+	     A (diagm (=> 0 (/ 2 (* (^ h 2)
+				    (ones (- n 2)))))
+		      (=> -1 (/ 1 (* (^ h 2)
+				     (ones (- n 3)))))
+		      (=> 1 (/ -1 (* (^ h 2)
+				     (ones (- n 3))))))
+	     B (+ (* b A) I)
+	     f (@. (* 4 (+ 2 x (* -1 (^ x 2)))))
+	     u (backslash B f)
+	     ue (aref u (div (+ n 1)
+			     2))
+	     loss (^ (- ue 1.0) 2)
+	     sess (Session))
+       (init sess)
+       (BFGS! sess loss)
+       (println (string "estimated b=")
+		(run sess b)))
      )))
 
 
