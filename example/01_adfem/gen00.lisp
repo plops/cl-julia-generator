@@ -50,8 +50,7 @@
 	     sol "K\\F"))
      )
     (write-source
-     (format nil "~a/source/~a" *path* "run_02_adcme")
-     `(do0
+     (format nil "~a/source/~a" *path* "run_02_adcme")     `(do0
        "using LinearAlgebra"
        "using ADCME"
        (setf n 101
@@ -59,12 +58,15 @@
 	     x (aref (LinRange 0 1 n)
 		     (slice 2 (- end 1)))
 	     b (Variable 10.0)
-	     A (diagm (=> 0 (/ 2 (* (^ h 2)
-				    (ones (- n 2)))))
-		      (=> -1 (/ 1 (* (^ h 2)
-				     (ones (- n 3)))))
-		      (=> 1 (/ -1 (* (^ h 2)
-				     (ones (- n 3))))))
+	     A (diagm (=> 0 (* (/ 2 (^ h 2)
+				  )
+			       (ones (- n 2))))
+		      (=> -1 (* (/ 1 (^ h 2)
+					)
+				(ones (- n 3))))
+		      (=> 1 (* (/ -1 (* (^ h 2)
+					))
+			       (ones (- n 3)))))
 	     B (+ (* b A) I)
 	     f (@. (* 4 (+ 2 x (* -1 (^ x 2)))))
 	     u (backslash B f)
