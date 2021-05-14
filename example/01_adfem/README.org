@@ -1,0 +1,4 @@
+
+- https://github.com/kailaix/AdFem.jl
+
+- i want to create adaptive infill for 3d printer, not sure if this will work
