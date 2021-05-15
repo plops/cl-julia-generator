@@ -8,4 +8,4 @@ K=compute_fem_laplace_matrix(k, mmesh)
 F=compute_fem_source_term1(f, mmesh)
 bdnode=bcnode(mmesh)
 K, F=impose_Dirichlet_boundary_conditions(K, F, bdnode, zeros(length(bdnode)))
-sol=K\F
+sol=((K)\(F))

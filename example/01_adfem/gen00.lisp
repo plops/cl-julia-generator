@@ -22,10 +22,12 @@
 	  `(do0
 	    (do0
 	     "using Pkg"
-	     (Pkg.add (string "ADCME")
-		      )
+	     (Pkg.add (string "ADCME"))
+	     (Pkg.build (string "ADCME"))
 	     (Pkg.add (string "AdFem"))
+	     (Pkg.build (string "AdFem"))
 	     (Pkg.add (string "PyPlot"))
+	     (Pkg.build (string "PyPlot"))
 	     
 	     ))))
     (write-source (format nil "~a/source/~a" *path* *code-file*) code)
@@ -37,17 +39,20 @@
 
        (setf mesh (Mesh (joinpath PDATA (string "twoholes_large.stl")))
 	     xy (gauss_nodes mmesh)
-	     k (space "@."
-		      (+ (* (sin (aref xy ":" 1))
-			    (+ 1 (^ (aref xy ":" 2) 2)))))
-	     f (* 1e5 (space "@." (+ (aref xy ":" 1)
-				     (aref xy ":" 2))))
+	     k (@.
+		(+ (* (sin (aref xy ":" 1))
+		      (^ (aref xy ":" 2) 2))
+		   1.0))
+	     f (* 1e5 (@. (+ (aref xy ":" 1)
+			     (aref xy ":" 2))))
 	     K (compute_fem_laplace_matrix k mmesh)
 	     F (compute_fem_source_term1 f mmesh)
 	     bdnode (bcnode mmesh)
 	     (ntuple K F) (impose_Dirichlet_boundary_conditions K F bdnode
 								(zeros (length bdnode)))
-	     sol "K\\F"))
+	     sol (backslash K F))
+       (do0
+	(setf nn_k)))
      )
     (write-source
      (format nil "~a/source/~a" *path* "run_02_adcme")     `(do0

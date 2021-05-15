@@ -3,3 +3,28 @@
 - https://github.com/kailaix/ADCME.jl
  
 - i want to create adaptive infill for 3d printer, not sure if this will work
+
+- watch videos
+- julia grew in 2020
+  - https://www.youtube.com/watch?v=CLzBiQKFYMs
+  - DataFrames.jl
+  - Plots.jl Gadfly.jl
+  - VegaLite.jl
+    - https://www.youtube.com/watch?v=fGeu_VU0Tjk
+    - similar to ggplot in R
+  - IJulia.jl
+  - ScikitLearn.jl TensorFlow.jl Flux.jl
+  - RCall.jl PyCall.jl
+
+  - julia observer, julia packages
+
+- mixing differential equations and neural networks
+  - https://www.youtube.com/watch?v=YuaVXt--gAA
+  - too much for me
+
+- understanding FEM
+  - https://www.youtube.com/watch?v=GHjopp47vvQ
+
+- getting started with ADCME
+  - https://www.youtube.com/watch?v=ZQyczBYZjQw
+
