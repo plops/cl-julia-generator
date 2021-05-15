@@ -3,6 +3,8 @@
 - https://github.com/kailaix/ADCME.jl
  
 - i want to create adaptive infill for 3d printer, not sure if this will work
+  - structural topology optimization problem
+  - https://kailaix.github.io/ADCME.jl/latest/topopt/
 
 - watch videos
 - julia grew in 2020
@@ -28,3 +30,9 @@
 - getting started with ADCME
   - https://www.youtube.com/watch?v=ZQyczBYZjQw
 
+- finite difference method for heat equation
+  - https://www.youtube.com/watch?v=wP39oNhIXh8
+
+    
+- solving heat equation in julia
+  - https://www.youtube.com/watch?v=Yilp_TTPCDg
