@@ -5,7 +5,7 @@
 - i want to create adaptive infill for 3d printer, not sure if this will work
   - structural topology optimization problem
   - https://kailaix.github.io/ADCME.jl/latest/topopt/
-
+  
 - watch videos
 - julia grew in 2020
   - https://www.youtube.com/watch?v=CLzBiQKFYMs
@@ -36,3 +36,12 @@
     
 - solving heat equation in julia
   - https://www.youtube.com/watch?v=Yilp_TTPCDg
+
+- intro to topology optimization (tu delft)
+  - https://www.youtube.com/watch?v=5ocnVS_HvdY
+  - https://www.youtube.com/watch?v=e-F_piSm3Fc
+    + maximize stiffness
+    + same as minizing elastic energy: c = .5 U.T @ K @ U
+    + static equation: K @ U = F
+    + design variables: rho_i \in [0,1]
+    + volume constraint: g = \sum_i (\rho_i - V_o) <=0
