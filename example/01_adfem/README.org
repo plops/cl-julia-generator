@@ -43,5 +43,47 @@
     + maximize stiffness
     + same as minizing elastic energy: c = .5 U.T @ K @ U
     + static equation: K @ U = F
+      - K stiffness matrix
+      - unknown U is displacement
     + design variables: rho_i \in [0,1]
     + volume constraint: g = \sum_i (\rho_i - V_o) <=0
+  - derivative of objective function with respect to design variable
+  - update \rho_i
+  - https://www.youtube.com/watch?v=pRf3EZPU1dI
+    - https://www.topopt.mek.dtu.dk/
+    - https://www.topopt.mek.dtu.dk/apps-and-software
+    - for python:
+      - https://www.topopt.mek.dtu.dk/Apps-and-software/Topology-optimization-codes-written-in-Python
+      - https://github.com/williamhunter/topy
+	- https://scholar.sun.ac.za/bitstream/handle/10019.1/2648/hunter_predominantly_2009.pdf?sequence=1&isAllowed=y
+  - https://www.youtube.com/watch?v=pRf3EZPU1dI
+    - how to use their software topopt 2d
+    - https://www.topopt.mek.dtu.dk/-/media/Subsites/topopt/TopOpt2D_UserGuide.ashx
+    
+  - https://www.youtube.com/watch?v=YRVMKAZHqqg
+    - very nice example of in-fill
+  - https://www.youtube.com/watch?v=iBjtW53tmzI
+    - topology optimization for additive manufacturing 1/4
+    - volume constraint not over full domain but in count local
+      elements in local neighborhood
+      \hat\rho_i < \alpha \forall i
+      \hat\rho_i = \frac{\sum_{j\in\Omega_i}
+      \rho_j}{\sum_{j\in\Omega_i} 1}
+  - https://www.youtube.com/watch?v=iBjtW53tmzI
+    - 2/4
+    - bone-like microstructure
+      - better for
+	- changing force direction
+	- removal of material
+  - https://www.youtube.com/watch?v=OWVWAkUHOkI
+    - additive manufacturing 3/4
+    - 60 deg needs support structure
+    - internal support structure that balances model and needs no removal
+    - rhombic lattice pattern looks like a quadtree
+  - https://www.youtube.com/watch?v=WFrX_1o9tr0
+    - 4/4
+    - distortion in metal additive manufacturing
+      - reduce by adding curved layers
+    - support building robot during fabrication of bridge
+    - implant with sparse material at the outside to stimulate
+      bone-ingrowth
