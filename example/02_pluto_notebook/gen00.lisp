@@ -26,22 +26,22 @@
    `(do0
      "### A Pluto.jl notebook ###"
      "# v0.17.5"
-    #+nil "
+     "
 " 
      "using Markdown"
      "using InteractiveUtils"
-     #+nil"
+     "
 "
      (do0 
       (comments "╔═╡ 45ce7b9c-7066-11ec-29b0-13acfccc64a9")
       ;(setf a 2)
       "a=3"
-      #+nil "
+      "
 ")
      (do0 (comments "╔═╡ 99f6fe7c-37dd-49a9-b0ba-af87eb3f7bab")
 	  ;(setf b (+ a 4))
 	  "b=a+4"
-	  #+nil "
+	  "
 ")
      (do0
       (comments "╔═╡ Cell order:"
