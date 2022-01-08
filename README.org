@@ -53,8 +53,45 @@ using IJulia
 - pluto notebooks https://github.com/fonsp/Pluto.jl
   #+begin_example
 ] add Pluto
-
+import Pluto
+Pluto.run()
   #+end_example
+  - example notebook https://github.com/fonsp/Pluto.jl/blob/main/sample/Basic.jl
+  - simple notebook
+ #+begin_example
+### A Pluto.jl notebook ###
+# v0.17.5
+
+using Markdown
+using InteractiveUtils
+
+# ╔═╡ 45ce7b9c-7066-11ec-29b0-13acfccc64a9
+a=2
+
+# ╔═╡ 99f6fe7c-37dd-49a9-b0ba-af87eb3f7bab
+b=a+3
+
+# ╔═╡ 00000000-0000-0000-0000-000000000001
+PLUTO_PROJECT_TOML_CONTENTS = """
+[deps]
+"""
+
+# ╔═╡ 00000000-0000-0000-0000-000000000002
+PLUTO_MANIFEST_TOML_CONTENTS = """
+# This file is machine-generated - editing it directly is not advised
+
+julia_version = "1.7.1"
+manifest_format = "2.0"
+
+[deps]
+"""
+
+# ╔═╡ Cell order:
+# ╠═45ce7b9c-7066-11ec-29b0-13acfccc64a9
+# ╠═99f6fe7c-37dd-49a9-b0ba-af87eb3f7bab
+# ╟─00000000-0000-0000-0000-000000000001
+# ╟─00000000-0000-0000-0000-000000000002
+ #+end_example
 
 
 - reference
