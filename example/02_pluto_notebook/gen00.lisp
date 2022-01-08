@@ -1,9 +1,10 @@
 (eval-when (:compile-toplevel :execute :load-toplevel)
   (ql:quickload "cl-julia-generator")
-  (ql:quickload "alexandria"))
+  (ql:quickload "alexandria")
+  (ql:quickload "uuid"))
 (in-package :cl-julia-generator)
 
-
+(string-downcase (format nil "~a" (uuid:make-v4-uuid)))
 
 (progn
   (defparameter *path* "/home/martin/stage/cl-julia-generator/example/01_adfem")
@@ -34,9 +35,13 @@
     (write-source
      (format nil "~a/source/~a" *path* "run_01_poisson")
      `(do0
-       "using AdFem"
-       "using PyPlot"
-
+       "### A Pluto.jl notebook ###"
+       "# v0.17.5"
+       ""
+       "using Markdown"
+       "using InteractiveUtils"
+       ""
+       " ╔═╡ 45ce7b9c-7066-11ec-29b0-13acfccc64a9"
        (setf mesh (Mesh (joinpath PDATA (string "twoholes_large.stl")))
 	     xy (gauss_nodes mmesh)
 	     k (@.
@@ -54,36 +59,7 @@
        (do0
 	(setf nn_k)))
      )
-    (write-source
-     (format nil "~a/source/~a" *path* "run_02_adcme")     `(do0
-       "using LinearAlgebra"
-       "using ADCME"
-       (setf n 101
-	     h (/ 1 (- n 1))
-	     x (aref (LinRange 0 1 n)
-		     (slice 2 (- end 1)))
-	     b (Variable 10.0)
-	     A (diagm (=> 0 (* (/ 2 (^ h 2)
-				  )
-			       (ones (- n 2))))
-		      (=> -1 (* (/ -1 (^ h 2)
-					)
-				(ones (- n 3))))
-		      (=> 1 (* (/ -1 (* (^ h 2)
-					))
-			       (ones (- n 3)))))
-	     B (+ (* b A) I)
-	     f (@. (* 4 (+ 2 x (* -1 (^ x 2)))))
-	     u (backslash B f)
-	     ue (aref u (div (+ n 1)
-			     2))
-	     loss (^ (- ue 1.0) 2)
-	     sess (Session))
-       (init sess)
-       (BFGS! sess loss)
-       (println (string "estimated b=")
-		(run sess b)))
-     )))
+   ))
 
 
 

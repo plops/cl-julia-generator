@@ -6,6 +6,7 @@
 
 (defparameter *file-hashes* (make-hash-table))
 
+#+nil
 (defun write-notebook (&key nb-file nb-code)
   "write julia jupyter notebook"
   (let ((tmp (format nil "~a.tmp" nb-file)))

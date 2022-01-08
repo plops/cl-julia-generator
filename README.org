@@ -92,8 +92,13 @@ manifest_format = "2.0"
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
  #+end_example
- - dependencies of packages and between cells will be stored by pluto in the julia file
-
+ - dependencies of packages and between cells will be stored by pluto
+   in the julia file
+ - whats up with the identifiers after ╔═╡? they seem to be uuid
+   https://en.wikipedia.org/wiki/Universally_unique_identifier
+   - do they encode hash of the cell's contents?
+   - it seems to be version 1, i.e encoding date-time with 100-ns
+     interval and computers mac address
 
 - reference
   - https://gist.github.com/TestSubjector/6a407f9a4ba5996a1692c9b9f6c0eb84 julia grammar
