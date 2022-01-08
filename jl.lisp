@@ -352,6 +352,13 @@
                         (emit `(if (not ,condition)
                                    (do0
                                     ,@forms)))))
+	      (using (destructuring-bind (name) (cdr code)
+                       (format nil "using ~a" (emit name))))
+	      (usings (destructuring-bind (&rest names) (cdr code)
+			      (with-output-to-string (s)
+				(loop for name in names
+				      do
+				      (format s "~a~%" (emit `(using ,name)))))))
 	      (import-from (destructuring-bind (module &rest rest) (cdr code)
 			     (format nil "from ~a import ~{~a~^, ~}" module
 				     rest)))

@@ -20,9 +20,9 @@
      "### A Pluto.jl notebook ###"
      "# v0.17.5"
      "
-" 
-     "using Markdown"
-     "using InteractiveUtils"
+"
+     (usings Markdown
+	     InteractiveUtils)
      "
 "
      ,(cells
