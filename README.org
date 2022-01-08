@@ -99,6 +99,13 @@ manifest_format = "2.0"
    - do they encode hash of the cell's contents?
    - it seems to be version 1, i.e encoding date-time with 100-ns
      interval and computers mac address
+   - if notebook isn't stored in correct format we get an error:
+#+begin_example
+┌ Warning: Old Pluto notebook might not have loaded correctly. Backup saved to: 
+│   backup_path = "/home/martin/stage/cl-julia-generator/example/02_pluto_notebook/source/run_00 backup 1.jl"
+└ @ Pluto ~/.julia/packages/Pluto/xIB4x/src/notebook/Notebook.jl:315
+#+end_example
+   - this is from  https://github.com/fonsp/Pluto.jl/blob/main/src/notebook/Notebook.jl
 
 - reference
   - https://gist.github.com/TestSubjector/6a407f9a4ba5996a1692c9b9f6c0eb84 julia grammar
