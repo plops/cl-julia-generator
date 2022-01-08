@@ -50,6 +50,13 @@ using IJulia
 }
 #+end_example
 
+- pluto notebooks https://github.com/fonsp/Pluto.jl
+  #+begin_example
+] add Pluto
+
+  #+end_example
+
+
 - reference
   - https://gist.github.com/TestSubjector/6a407f9a4ba5996a1692c9b9f6c0eb84 julia grammar
 
