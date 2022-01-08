@@ -5,7 +5,7 @@
     :author " <kielhorn.martin@gmail.com>"
     :licence "GPL"
     :depends-on ("alexandria" ;"jonathan"
-		 )
+		 "uuid")
     :serial t
     :components ((:file "package")
 		 (:file "jl")

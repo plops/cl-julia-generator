@@ -6,6 +6,33 @@
 
 (defparameter *file-hashes* (make-hash-table))
 
+(defun cell (&key uuid code)
+  `(do0
+    (comments ,(format nil "╔═╡ ~a" uuid))
+    ,code
+    "
+"
+    ))
+
+(defun cells (codes)
+  "emit sequential cells and their dependency graph (cell order)"
+  (let ((data (loop for code in codes
+		    collect
+		    ;; uuid v1 doesn't work (probably too fast execution to generate unique ids)
+		    (let ((uuid (string-downcase (format nil "~a" (uuid:make-v4-uuid)))))
+		      `(:uuid ,uuid
+			:content ,(cell :uuid uuid
+					:code code))))))
+    `(do0
+      ,@(mapcar #'(lambda (x) (getf x :content))
+		data)
+      (do0
+       (comments "╔═╡ Cell order:"
+		 ,@(mapcar #'(lambda (x)
+			       (format nil "╠═~a" (getf x :uuid)))
+			   data))))))
+
+
 #+nil
 (defun write-notebook (&key nb-file nb-code)
   "write julia jupyter notebook"
