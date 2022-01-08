@@ -1,11 +1,8 @@
-using AdFem
-using PyPlot
-mesh=Mesh(joinpath(PDATA, "twoholes_large.stl"))
-xy=gauss_nodes(mmesh)
-k=@. ((((sin(xy[:,1]))*(((1)+(((xy[:,2]) ^ (2))))))))
-f=(((1.00e+5))*(@. ((xy[:,1])+(xy[:,2]))))
-K=compute_fem_laplace_matrix(k, mmesh)
-F=compute_fem_source_term1(f, mmesh)
-bdnode=bcnode(mmesh)
-K, F=impose_Dirichlet_boundary_conditions(K, F, bdnode, zeros(length(bdnode)))
-sol=((K)\(F))
+### A Pluto.jl notebook ###
+# v0.17.5
+using Markdown
+using InteractiveUtils
+ ╔═╡ 45ce7b9c:7066:11ec:29b0:13acfccc64a9
+a=2
+ ╔═╡ 99f6fe7c:37dd:49a9:b0ba:af87eb3f7bab
+b=((a)+(3))
