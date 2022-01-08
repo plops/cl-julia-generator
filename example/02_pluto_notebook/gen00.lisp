@@ -7,6 +7,10 @@
 (string-downcase (format nil "~a" (uuid:make-v4-uuid)))
 (string-downcase (format nil "~a" (uuid:make-v1-uuid)))
 
+(defun cell (code)
+  `(do0
+    ))
+
 (progn
   (defparameter *path* "/home/martin/stage/cl-julia-generator/example/02_pluto_notebook")
   ;(defparameter *code-file* "run_00_adfem")
@@ -26,9 +30,9 @@
      "using Markdown"
      "using InteractiveUtils"
      ""
-     (do0 " ╔═╡ 45ce7b9c-7066-11ec-29b0-13acfccc64a9"
+     (do0 "# ╔═╡ 45ce7b9c-7066-11ec-29b0-13acfccc64a9"
 	  (setf a 2))
-     (do0 " ╔═╡ 99f6fe7c-37dd-49a9-b0ba-af87eb3f7bab"
+     (do0 "# ╔═╡ 99f6fe7c-37dd-49a9-b0ba-af87eb3f7bab"
 	  (setf b (+ a 3)))
      )
    )
