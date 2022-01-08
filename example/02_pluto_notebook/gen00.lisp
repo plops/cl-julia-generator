@@ -34,13 +34,13 @@
 "
      (do0 
       (comments "╔═╡ 45ce7b9c-7066-11ec-29b0-13acfccc64a9")
-      ;(setf a 2)
-      "a=3"
+      (setf a 2)
+      ;"a=3"
       "
 ")
      (do0 (comments "╔═╡ 99f6fe7c-37dd-49a9-b0ba-af87eb3f7bab")
-	  ;(setf b (+ a 4))
-	  "b=a+4"
+	  (setf b (+ a 5))
+	  ;"b=a+4"
 	  "
 ")
      (do0
