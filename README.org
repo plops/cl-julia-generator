@@ -1,2 +1,60 @@
+- using notebooks
+  - https://towardsdatascience.com/how-to-best-use-julia-with-jupyter-82678a482677
+#+begin_example
+] add IJulia
+using IJulia
+#+end_example
+- minimal notebook 
+#+begin_example
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3"
+      ]
+     },
+     "execution_count": 1,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "1+2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Julia 1.7.1",
+   "language": "julia",
+   "name": "julia-1.7"
+  },
+  "language_info": {
+   "file_extension": ".jl",
+   "mimetype": "application/julia",
+   "name": "julia",
+   "version": "1.7.1"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
+#+end_example
+
 - reference
   - https://gist.github.com/TestSubjector/6a407f9a4ba5996a1692c9b9f6c0eb84 julia grammar
+
+    
