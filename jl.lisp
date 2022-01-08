@@ -33,15 +33,20 @@
 					       appending
 					       (let ((tempfn "/dev/shm/cell"))
 						 (write-source tempfn p)
-						 (with-open-file (stream (format nil "~a.py" tempfn))
+						 (with-open-file (stream (format nil "~a.jl" tempfn))
 						   (loop for line = (read-line stream nil)
 							 while line
 							 collect
 							 (format nil "~a~c" line #\Newline)))))))
 			     )))
-		  :|metadata| (:|kernelspec| (:|display_name| "Python 3"
-					       :|language| "python"
-					      :|name| "python3"))
+		  :|metadata| (:|kernelspec| (:|display_name| "Julia 1.7.1"
+					       :|language| "julia"
+					      :|name| "julia-1.7")
+				:|language_info| (:|file_extension| ".jl"
+						   :|mimetype| "application/julia"
+						  :|name| "julia"
+						   :|version| "1.7.1"
+						  ))
 		 :|nbformat| 4
 		  :|nbformat_minor| 2))))
     #+nil
