@@ -92,6 +92,7 @@ manifest_format = "2.0"
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
  #+end_example
+ - dependencies of packages and between cells will be stored by pluto in the julia file
 
 
 - reference
